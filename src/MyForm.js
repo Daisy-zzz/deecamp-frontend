@@ -1,27 +1,21 @@
 import { Form, Input, Upload, message, Button, Icon } from 'antd';
 import React from 'react';
 import 'antd/dist/antd.css';
-import { hospitalSetting } from './send';
+import API from "./utils/api";
+import Headers from "./utils/headers";
+
 
 class Myform extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
+            console.log(values);
             if (!err) {
-                fetch('http://localhost:5000/hospital', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
-                    },
-                    body: JSON.stringify(values)
-                }).then(res => res.json()).then(function (res){
-                    console.log("hello");
+                fetch(API + '/hospital', Headers(values)).then(res => res.json()).then(function (res){
                     console.log(res);
+                    window.location.href = 'http://localhost:3000/schedule';
                 });
             }
-            
         });
     };
 
@@ -65,9 +59,11 @@ class Myform extends React.Component {
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ span: 22, offset: 5 }}>
-                    <Upload {...props}>
+                    {getFieldDecorator('file', {
+                        rules: [{ required: true, message: '请上传csv文件' }],
+                    })(<Upload {...props}>
                         <Button size="large"><Icon type="upload" />点击上传</Button>
-                    </Upload>
+                       </Upload>)}
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ span: 22, offset: 10 }}>
