@@ -8,19 +8,20 @@ class Myform extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
-                
                 fetch('http://localhost:5000/hospital', {
                     method: 'POST',
                     headers: {
-                        'content-type': 'application/json'
+                        'content-type': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
                     },
-                    mode: 'no-cors',
                     body: JSON.stringify(values)
-                }).then(function (res) {
+                }).then(res => res.json()).then(function (res){
+                    console.log("hello");
                     console.log(res);
                 });
             }
+            
         });
     };
 
@@ -62,12 +63,12 @@ class Myform extends React.Component {
                         rules: [{ required: true, message: '请输入复苏室数目' }],
                     })(<Input />)}
                 </Form.Item>
-                
-                {/* <Form.Item wrapperCol={{ span: 22, offset: 5 }}>
+
+                <Form.Item wrapperCol={{ span: 22, offset: 5 }}>
                     <Upload {...props}>
                         <Button size="large"><Icon type="upload" />点击上传</Button>
                     </Upload>
-                </Form.Item> */}
+                </Form.Item>
 
                 <Form.Item wrapperCol={{ span: 22, offset: 10 }}>
                     <Button type="primary" size="large" htmlType="submit">完成</Button>
