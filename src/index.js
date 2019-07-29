@@ -8,12 +8,14 @@ import './index.css';
 import App from './App';
 import Schedule from './Schedule'
 import * as serviceWorker from './serviceWorker';
+import MyD3 from './MyD3';
 
 ReactDOM.render(
     <LocaleProvider locale={zh_CN}>
         <BrowserRouter>
             <Switch>
-                <Route path='/' exact component={App} />
+                <Route path='/' exact component={MyD3} />
+                {/* <Route path='/' exact component={App} /> */}
                 <Route path='/schedule' exact component={Schedule} />
             </Switch>
         </BrowserRouter>
