@@ -33,17 +33,17 @@
 }
 
 .OperationSchedule {
-  background: midnightblue;
-  overflow: scroll;
-  margin: 100px;
+  background: #D9F0F6;
+  margin-left:50px;
+  /* overflow: scroll; */
 }
 
 .BedSchedule {
   width: 2880px;
   height: 30px;
-  background: #5c5cd6;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  background: #80B2D3;
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   position: relative;
 }
@@ -65,12 +65,23 @@
 .OperationItemBody {
   width: 100px;
   height: 30px;
-  background: #61dafb;
+  background: #EC7743;
 }
 
 .Hr {
   width: 0;
-  height: 60px;
+  height: 70px;
   border-left: aliceblue 1px solid;
   position: absolute;
 }
+
+.YAxis {
+  position:absolute;
+  top:0; 
+  left:0; 
+  width:50px; 
+  height:100%; 
+  background-color:#CCCCCC;
+  margin-top:90px;
+}
+

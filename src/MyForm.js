@@ -1,9 +1,11 @@
-import { Form, Input, Upload, message, Button, Icon } from 'antd';
+import {Form, Upload, message, Button, Icon, TimePicker, InputNumber} from 'antd';
 import React from 'react';
 import 'antd/dist/antd.css';
 import API from "./utils/api";
 import Headers from "./utils/headers";
+import moment from 'moment';
 
+const format = 'HH:mm';
 
 class Myform extends React.Component {
     handleSubmit = e => {
@@ -11,8 +13,12 @@ class Myform extends React.Component {
         this.props.form.validateFields((err, values) => {
             console.log(values);
             if (!err) {
-                fetch(API + '/hospital', Headers(values)).then(res => res.json()).then(function (res){
-                    console.log(res);
+                fetch(API + '/hospital', Headers(values)).then(res => {
+                if (res.status === 200) {
+                        return res.json()
+                }
+                }).then(function (json){
+                    console.log(json);
                     window.location.href = 'http://localhost:3000/schedule';
                 });
             }
@@ -23,7 +29,7 @@ class Myform extends React.Component {
         const { getFieldDecorator } = this.props.form;
         const props = {
             name: 'file',
-            action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+            action: 'http://127.0.0.1:5000/hospital',
             headers: {
                 authorization: 'authorization-text',
             },
@@ -39,30 +45,42 @@ class Myform extends React.Component {
             },
         };
         return (
-            <Form labelCol={{ span: 10 }} wrapperCol={{ span: 12 }} onSubmit={this.handleSubmit}>
-                <Form.Item label="床位数">
+            <Form  onSubmit={this.handleSubmit}>
+                <Form.Item labelCol={{ span: 10}} wrapperCol={{ span:10, offset: -1 }} label="上班时间">
+                    {getFieldDecorator('start_time', {
+                        rules: [{ required: true, message: '请输入上班时间！' }],
+                    })(<TimePicker initialValue={moment('8:00', format)} format={format} />)}
+                </Form.Item>
+
+                <Form.Item labelCol={{ span: 10}} wrapperCol={{ span:10, offset: -1 }} label="下班时间">
+                    {getFieldDecorator('end_time', {
+                        rules: [{ required: true, message: '请输入下班时间！' }],
+                    })(<TimePicker initialValue={moment('4:00', format)} format={format} />)}
+                </Form.Item>
+
+                <Form.Item labelCol={{ span: 12}} wrapperCol={{ span:10, offset: -1 }} label="手术室数量">
                     {getFieldDecorator('operRoom', {
-                        rules: [{ required: true, message: '请输入床位数！' }],
-                    })(<Input />)}
+                        rules: [{ required: true, message: '请输入手术室数量' }],
+                    })(<InputNumber min={1} />)}
                 </Form.Item>
 
-                <Form.Item label="医生数">
-                    {getFieldDecorator('doctor', {
-                        rules: [{ required: true, message: '请输入医生数' }],
-                    })(<Input />)}
-                </Form.Item>
-
-                <Form.Item label="复苏室">
+                <Form.Item labelCol={{ span: 12}} wrapperCol={{ span:10, offset: -1 }} label="复苏室数量">
                     {getFieldDecorator('recover', {
-                        rules: [{ required: true, message: '请输入复苏室数目' }],
-                    })(<Input />)}
+                        rules: [{ required: true, message: '请输入复苏室数量' }],
+                    })(<InputNumber min={1} />)}
+                </Form.Item>
+
+                <Form.Item labelCol={{ span: 12}} wrapperCol={{ span:10, offset: -1 }} label="最小复苏时间">
+                    {getFieldDecorator('doctor', {
+                        rules: [{ required: true, message: '请输入复苏时间' }],
+                    })(<InputNumber min={1} />)}
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ span: 22, offset: 5 }}>
                     {getFieldDecorator('file', {
                         rules: [{ required: true, message: '请上传csv文件' }],
                     })(<Upload {...props}>
-                        <Button size="large"><Icon type="upload" />点击上传</Button>
+                        <Button size="large"><Icon type="upload" />上传多人病例表</Button>
                        </Upload>)}
                 </Form.Item>
 

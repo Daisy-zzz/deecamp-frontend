@@ -6,19 +6,16 @@ import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import 'moment/locale/zh-cn';
 import './index.css';
 import App from './App';
-import Schedule from './Schedule'
+// import Jia from './Jia';
+import Yin from './Yin';
 import * as serviceWorker from './serviceWorker';
-import MyD3 from './MyD3';
-import Jia from './Jia';
 
 ReactDOM.render(
     <LocaleProvider locale={zh_CN}>
         <BrowserRouter>
             <Switch>
-                <Route path='/' exact component={Jia} /> 
-                {/* <Route path='/' exact component={MyD3} /> */}
-                {/* <Route path='/' exact component={App} /> */}
-                <Route path='/schedule' exact component={Schedule} />
+                <Route path='/' exact component={App} />
+                <Route path='/schedule' exact component={Yin} />
             </Switch>
         </BrowserRouter>
     </LocaleProvider>

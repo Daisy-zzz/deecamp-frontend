@@ -2,25 +2,114 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /*font-size: calc(10px + 2vmin);*/
+  /*color: white;*/
+}
+
+.logo {
+  margin-top: 30px;
+  margin-left: 80px;
+  height: 200px;
+  width: 300px;
+}
+
+
+.pic {
+  width: 10%;
+  margin-left: 400px;
+  margin-top: 160px;
+}
+
+.App-back {
+  background-image: url('/img/back.jpg');
+  height: 50%;
+  background-position: center;
+  background-repeat: repeat;
+  min-height: 100vh;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*font-size: calc(10px + 2vmin);*/
+  /*color: white;*/
+}
+
+.App-back2 {
+  background-image: url('/img/back.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.text1 {
+  margin-top: 40px;
+  font-size: 25px;
+  color: azure;
+
+}
+
+.text2 {
+  margin-top: 80px;
+  margin-left: 180px;
+  text-align: left;
+  font-size: 50px;
+  color: azure;
+  font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeitiSC-Light","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.text3 {
+  margin-top: 90px;
+  margin-left: 60px;
+  text-align: left;
+  font-size: 40px;
+  color: azure;
+}
+
+.text4 {
+  margin-left: 180px;
+  text-align: left;
+  color: azure;
+  font-size: 18px;
+}
+
+.page2_text1 {
+  margin-top: 150px;
+  margin-left: 150px;
+  text-align: left;
+  color: azure;
+  font-size: 30px;
+  font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+
+.button1 {
+  margin-top: 50px;
+  margin-left: 470px;
+}
+
+.button2 {
+  margin-top: 50px;
+  margin-left: 40px;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.bottom_text {
+  color: azure;
+  margin-top: 150px;
+  text-align: center;
+  font-size: 18px;
 }
 
 @keyframes App-logo-spin {
