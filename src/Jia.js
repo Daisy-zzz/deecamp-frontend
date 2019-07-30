@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+﻿import React, {Component} from 'react';
 import './Jia.css';
 
 const unitPx = 10;
 const barHeight = 30;
 
+// sample data
 let schedules = [
     [
         {
@@ -50,6 +51,7 @@ class OperationItem extends Component {
                 {this.props.patientName}
             </div>
             <div className="TimeTag">
+
             </div>
         </div>;
     }
@@ -91,7 +93,7 @@ class OperationSchedule extends Component {
         return <div className="OperationSchedule"
                     style={{
                         width: 96 * unitPx + "px",
-                        height: this.props.schedules.length * unitPx * 2 + "px"
+                        height: this.props.schedules.length * barHeight * 2 + "px"
                     }}>
             {this.props.schedules.map(
                 (schedule, bedIndex) => {
