@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart, Geom, Axis, Tooltip, Coord, Legend, Label } from "bizcharts";
 import DataSet from "@antv/data-set";
-import data from './utils/data'
+import data from './utils/d3data'
 
 class MyD3 extends React.Component {
     render() {
@@ -37,9 +37,7 @@ class MyD3 extends React.Component {
                         position="yAxis*value"
                         color={[
                             "duration",
-                            function (duration) {
-                                return colorMap[duration];
-                            }
+                            ['#80B2D3', '#EC7743']
                         ]}
                         shape="smooth"
                     >

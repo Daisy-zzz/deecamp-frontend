@@ -9,12 +9,14 @@ import App from './App';
 import Schedule from './Schedule'
 import * as serviceWorker from './serviceWorker';
 import MyD3 from './MyD3';
+import Jia from './Jia';
 
 ReactDOM.render(
     <LocaleProvider locale={zh_CN}>
         <BrowserRouter>
             <Switch>
-                <Route path='/' exact component={MyD3} />
+                <Route path='/' exact component={Jia} /> 
+                {/* <Route path='/' exact component={MyD3} /> */}
                 {/* <Route path='/' exact component={App} /> */}
                 <Route path='/schedule' exact component={Schedule} />
             </Switch>

@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.OperationSchedule {
+  background: midnightblue;
+  overflow: scroll;
+  margin: 100px;
+}
+
+.BedSchedule {
+  width: 2880px;
+  height: 30px;
+  background: #5c5cd6;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  position: relative;
+}
+
+
+.OperationItem {
+  display: flex;
+  position: absolute;
+}
+
+.TimeTag {
+  width: 2px;
+  height: 40px;
+  background: aliceblue;
+  position:relative;
+  top:-5px;
+}
+
+.OperationItemBody {
+  width: 100px;
+  height: 30px;
+  background: #61dafb;
+}
+
+.Hr {
+  width: 0;
+  height: 60px;
+  border-left: aliceblue 1px solid;
+  position: absolute;
+}
