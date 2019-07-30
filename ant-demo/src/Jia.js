@@ -95,8 +95,17 @@ class BedSchedule extends Component {
     render() {
         return <div className="BedSchedule">
             {
-                [...Array(97).keys()].map(x => {
+                [...Array(96).keys()].map(x => {
+                    if (this.props.bedIndex === 0) {
+                        return <div className="Hr"
+                                    style={{
+                                        left: x * unitPx * 3 + "px",
+                                        height: barHeight * 3 + "px"}}>
+
+                        </div>
+                    }
                     return <div className="Hr" style={{left: x * unitPx * 3 + "px"}}>
+
                     </div>
                 })
             }
@@ -129,11 +138,9 @@ class OperationSchedule extends Component {
 function Jia() {
   return (
     <div className="App">
-        <div>横轴</div>
-        <div>
-            <div className='YAxis'>纵轴</div>
-            <OperationSchedule schedules={schedules} />
-        </div>
+        <h1>手术室排班表</h1>
+        <OperationSchedule schedules={schedules} />
+        <h1>一些图表信息</h1>
     </div>
   );
 }
