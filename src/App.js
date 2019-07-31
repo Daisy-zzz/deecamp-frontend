@@ -38,6 +38,7 @@ class App extends React.Component{
             headers: {
                 authorization: 'authorization-text',
             },
+            accept: ".csv",
             onChange(info) {
                 if (info.file.status !== 'uploading') {
                     console.log(info.file, info.fileList);
