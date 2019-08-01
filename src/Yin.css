@@ -13,3 +13,12 @@
     /*border:2px solid;*/
     /*border-radius:25px;*/
 /*}*/
+.chart {
+    /* height: 300px;
+    width: 200px; */
+    margin-left: 50px;
+    margin-top: 300px;
+    margin-bottom: 100px;
+    position: relative;
+    width: 30%;
+}

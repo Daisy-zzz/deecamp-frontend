@@ -1,6 +1,6 @@
-import Jia from './Jia';
+import { Jia, Chart } from './Jia';
 import React from 'react';
-import  EditableTable from './Csv2Table';
+import EditableTable from './Csv2Table';
 import { Tabs } from 'antd';
 import logo from './logo.svg';
 import './Yin.css';
@@ -11,8 +11,8 @@ function callback(key) {
     console.log(key);
 }
 
-class Yin extends React.Component{
-    render(){
+class Yin extends React.Component {
+    render() {
         return (
             <div>
                 <img src={logo} className='Yinlogo' />
@@ -25,6 +25,9 @@ class Yin extends React.Component{
                     <TabPane tab="手术室调度排班表" key="2">
                         <div>
                             <Jia />
+                        </div>
+                        <div className="chart">
+                            <Chart />
                         </div>
                     </TabPane>
                 </Tabs>
