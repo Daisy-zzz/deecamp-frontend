@@ -33,6 +33,7 @@ class Myform extends React.Component {
             headers: {
                 authorization: 'authorization-text',
             },
+            accept: ".csv",
             onChange(info) {
                 if (info.file.status !== 'uploading') {
                     console.log(info.file, info.fileList);
@@ -61,19 +62,19 @@ class Myform extends React.Component {
                 <Form.Item labelCol={{ span: 12}} wrapperCol={{ span:10, offset: -1 }} label="手术室数量">
                     {getFieldDecorator('operRoom', {
                         rules: [{ required: true, message: '请输入手术室数量' }],
-                    })(<InputNumber min={1} />)}
+                    })(<InputNumber min={1} precision={0.1} />)}
                 </Form.Item>
 
                 <Form.Item labelCol={{ span: 12}} wrapperCol={{ span:10, offset: -1 }} label="复苏室数量">
                     {getFieldDecorator('recover', {
                         rules: [{ required: true, message: '请输入复苏室数量' }],
-                    })(<InputNumber min={1} />)}
+                    })(<InputNumber min={1} precision={0.1} />)}
                 </Form.Item>
 
                 <Form.Item labelCol={{ span: 12}} wrapperCol={{ span:10, offset: -1 }} label="最小复苏时间">
                     {getFieldDecorator('doctor', {
                         rules: [{ required: true, message: '请输入复苏时间' }],
-                    })(<InputNumber min={1} />)}
+                    })(<InputNumber min={1} precision={0.1} />)}
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ span: 22, offset: 5 }}>
