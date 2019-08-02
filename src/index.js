@@ -5,10 +5,10 @@ import { LocaleProvider } from 'antd';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import 'moment/locale/zh-cn';
 import './index.css';
-import App from './App';
+import App from './ors_frontend/App';
 // import Jia from './Jia';
-import Yin from './Yin';
-import * as serviceWorker from './serviceWorker';
+import Yin from './ors_frontend/Yin';
+import * as serviceWorker from './ors_frontend/serviceWorker';
 
 ReactDOM.render(
     <LocaleProvider locale={zh_CN}>

@@ -10,8 +10,8 @@ const data = [
         "operatingName": "心脏搭桥手术",
         "doctorName": "李四",
         "predTime": "120",
-        //"orId": "3",
-        //"startTime": "8:00"
+        "orId": "",
+        "startTime": ""
     }, {
         "id": "2",
         "name": "王二",

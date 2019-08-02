@@ -15,6 +15,7 @@ class Yin extends React.Component {
     render() {
         return (
             <div>
+                
                 <img src={logo} className='Yinlogo' />
                 <Tabs defaultActiveKey="1" onChange={callback}>
                     <TabPane tab="患者总览" key="1">

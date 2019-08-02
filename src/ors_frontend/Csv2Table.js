@@ -240,12 +240,14 @@ class EditableTable extends React.Component {
                 dataIndex: 'orId',
                 width: '8%',
                 editable: true,
+                initialValue: 0
             },
             {
                 title: '开始时间',
                 dataIndex: 'startTime',
                 width: '10%',
                 editable: true,
+                initialValue: 0
             },
             // {
             //     title: '操作',
