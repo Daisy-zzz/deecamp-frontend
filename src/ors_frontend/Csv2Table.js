@@ -1,12 +1,13 @@
 import React from 'react';
 //import './App.css';
-import { Table, Input, Button, Popconfirm, Form, Icon, notification} from 'antd';
+import { Table, Input, Button, Popconfirm, Form, Icon, notification } from 'antd';
 import Highlighter from 'react-highlight-words';
 //import ReactDOM from 'react-dom';
 import './Csv2Table.css';
 import data from './Data.js';
 import API from './utils/api.js';
 import Headers from './utils/headers.js';
+import Myform from './MyForm.js';
 
 const EditableContext = React.createContext();//上下文(Context) 提供了一种通过组件树传递数据的方法，无需在每个级别手动传递 props 属性。
 //const { Search } = Input;
@@ -61,14 +62,14 @@ class EditableCell extends React.Component {
                 })(<Input ref={node => (this.input = node)} onPressEnter={this.save} onBlur={this.save} />)}
             </Form.Item>
         ) : (
-            <div
-                className="editable-cell-value-wrap"
-                style={{ paddingRight: 24 }}
-                onClick={this.toggleEdit}
-            >
-                {children}
-            </div>
-        );
+                <div
+                    className="editable-cell-value-wrap"
+                    style={{ paddingRight: 24 }}
+                    onClick={this.toggleEdit}
+                >
+                    {children}
+                </div>
+            );
     };
 
     render() {
@@ -87,32 +88,15 @@ class EditableCell extends React.Component {
                 {editable ? (
                     <EditableContext.Consumer>{this.renderCell}</EditableContext.Consumer>
                 ) : (
-                    children
-                )}
+                        children
+                    )}
             </td>
         );
     }
 }
 
 class EditableTable extends React.Component {
-    handleClick = () => {
-        console.log(this.state.dataSource);
-        notification.open({
-            message: '提交成功！',
-            description:
-                '患者信息已经成功上传，正在生成调度表。',
-            onClick: () => {
-                console.log('Notification Clicked!');
-            },
-        });
-        fetch(API + '/table', Headers(this.state.dataSource)).then(res => {
-            if (res.status === 200) {
-                return res.json();
-            }
-        }).then(function (json){
-            console.log(json);
-        });
-    };
+    
     // state = {
     //     searchText: '',
     // };
@@ -210,7 +194,7 @@ class EditableTable extends React.Component {
                 title: '科室',
                 width: '10%',
                 dataIndex: 'department',
-                sorter: (a, b) => a.department.localeCompare(b.department,"zh"),
+                sorter: (a, b) => a.department.localeCompare(b.department, "zh"),
                 ...this.getColumnSearchProps('department'),
             },
             {
@@ -224,7 +208,7 @@ class EditableTable extends React.Component {
                 width: '10%',
                 dataIndex: 'doctorName',
                 defaultSortOrder: 'descend',
-                sorter: (a, b) => a.doctorName.localeCompare(b.doctorName,"zh"),
+                sorter: (a, b) => a.doctorName.localeCompare(b.doctorName, "zh"),
                 ...this.getColumnSearchProps('doctorName'),
             },
             {
@@ -249,42 +233,13 @@ class EditableTable extends React.Component {
                 editable: true,
                 initialValue: 0
             },
-            // {
-            //     title: '操作',
-            //     dataIndex: 'operation',
-            //     render: (text, record) =>
-            //         this.state.dataSource.length >= 1 ? (
-            //             <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(record.key)}>
-            //                 <a href="javascript:;">删除</a>
-            //             </Popconfirm>
-            //         ) : null,
-            // },
         ];
 
         this.state = {
             searchText: '',
-            dataSource : data,
+            dataSource: data,
         };
     }
-
-    // handleDelete = key => {
-    //     const dataSource = [...this.state.dataSource];
-    //     this.setState({ dataSource: dataSource.filter(item => item.key !== key) });
-    // };
-    //
-    // handleAdd = () => {
-    //     const { count, dataSource } = this.state;
-    //     const newData = {
-    //         key: count,
-    //         name: `Edward King ${count}`,
-    //         age: 32,
-    //         address: `London, Park Lane no. ${count}`,
-    //     };
-    //     this.setState({
-    //         dataSource: [...dataSource, newData],
-    //         count: count + 1,
-    //     });
-    // };
 
     handleSave = row => {
         const newData = [...this.state.dataSource];
@@ -324,14 +279,6 @@ class EditableTable extends React.Component {
             <div>
                 <div>
                     <p className="wordFont">患者信息表（可修改预测手术时长，手术室号，开始时间）</p>
-                    {/*<Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 }}>*/}
-                        {/*Add a row*/}
-                    {/*</Button>*/}
-                    {/*<Search*/}
-                        {/*className="search"*/}
-                        {/*placeholder="搜索患者信息"*/}
-                        {/*onSearch={value => console.log(value)}*/}
-                        {/*style={{ width: 200 }} />*/}
                 </div>
 
                 <Table
@@ -341,9 +288,7 @@ class EditableTable extends React.Component {
                     dataSource={dataSource}
                     columns={columns}
                 />
-                <div>
-                    <Button onClick={this.handleClick} type="primary" style={{ marginBottom: 16 }} className="submit"> 提交 </Button>
-                </div>
+                
             </div>
 
         );
