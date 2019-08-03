@@ -15,31 +15,25 @@
   /*color: white;*/
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 10vmin;
-  pointer-events: none;
-  float: left;
-  width: 10%;
-  margin-top: 10px;
-  margin-left: 100px;
+.logo {
+  margin-top: 80px;
+  margin-left: 80px;
+  height: 150px;
+  width: 250px;
 }
 
 
 .pic {
   width: 10%;
   margin-left: 400px;
-  margin-top: 100px;
+  margin-top: 160px;
 }
 
 .App-back {
   background-image: url('/img/back.jpg');
-  height: 100%;
+  height: 50%;
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /*background-size: cover;*/
-  /*background-color: #282c34;*/
+  background-repeat: repeat;
   min-height: 100vh;
   /*display: flex;*/
   /*flex-direction: column;*/
@@ -50,18 +44,22 @@
 }
 
 .App-back2 {
-  background-color: #282c34;
+  background-image: url('/img/back.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 
 .text1 {
-  margin-top: 50px;
+  margin-top: 40px;
   font-size: 25px;
   color: azure;
 
 }
 
 .text2 {
-  margin-top: 100px;
+  margin-top: 80px;
   margin-left: 180px;
   text-align: left;
   font-size: 50px;
@@ -70,7 +68,7 @@
 }
 
 .text3 {
-  margin-top: 120px;
+  margin-top: 90px;
   margin-left: 60px;
   text-align: left;
   font-size: 40px;
@@ -85,7 +83,7 @@
 }
 
 .page2_text1 {
-  margin-top: 100px;
+  margin-top: 150px;
   margin-left: 150px;
   text-align: left;
   color: azure;
