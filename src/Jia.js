@@ -5,50 +5,57 @@ import { Bar as BarChart, Doughnut } from 'react-chartjs-2';
 
 const unitPx = 15;
 
-// sample data
-let schedules = [
-    [
-        {
-            patientName: "张三",
-            secondInfo: "张三 8:30~9:30 李医生",
-            thirdInfo: "张三 8:30~9:30 李医生 三级信息",
-            beginIndex: 0,
-            timeDuration: 10
-        },
-        {
-            patientName: "李四",
-            secondInfo: "李四 8:30~9:30 李医生",
-            thirdInfo: "李四 8:30~9:30 李医生 三级信息",
-            beginIndex: 18,
-            timeDuration: 5
-        }
-    ],
-    [
-        {
-            patientName: "王五",
-            secondInfo: "王五 8:30~9:30 李医生",
-            thirdInfo: "王五 8:30~9:30 李医生 三级信息",
-            beginIndex: 9,
-            timeDuration: 20
-        }
-    ],
-    [
-        {
-            patientName: "赵六",
-            secondInfo: "赵六 8:30~9:30 李医生",
-            thirdInfo: "赵六 8:30~9:30 李医生 三级信息",
-            beginIndex: 10,
-            timeDuration: 8
-        },
-        {
-            patientName: "unknown",
-            secondInfo: "unknown 8:30~9:30 李医生",
-            thirdInfo: "张三 8:30~9:30 李医生 三级信息",
-            beginIndex: 30,
-            timeDuration: 22
-        }
-    ],
-    [], [], [], [], [], [], [], [], [], [], [], [], []
+let schedules = 
+[
+    {
+        "roomInfo": "Room 1",
+        "operation": [
+            {
+                "patientName": "张三",
+                "secondInfo": "张三 8:30~9:30 李医生",
+                "thirdInfo": "张三 8:30~9:30 李医生 三级信息",
+                "beginIndex": 0,
+                "operationDuration": 12,
+                "recoverDuration": 2,
+                "cleanDuration": 6
+            },
+            {
+                "patientName": "李四",
+                "secondInfo": "李四 8:30~9:30 李医生",
+                "thirdInfo": "李四 8:30~9:30 李医生 三级信息",
+                "beginIndex": 18,
+                "operationDuration": 6,
+                "recoverDuration": 3,
+                "cleanDuration": 4
+            }
+        ]
+    },
+    {
+        "roomInfo": "Room 2",
+        "operation": [
+            {
+                "patientName": "王五",
+                "secondInfo": "王五 8:30~9:30 李医生",
+                "thirdInfo": "王五 8:30~9:30 李医生 三级信息",
+                "beginIndex": 9,
+                "operationDuration": 20,
+                "recoverDuration": 1,
+                "cleanDuration": 2
+            }
+        ]
+    },
+    {
+        "roomInfo": "Room 2",
+        "operation": []
+    },
+    {
+        "roomInfo": "Room 3",
+        "operation": []
+    },
+    {
+        "roomInfo": "Room 4",
+        "operation": []
+    }
 ];
 
 class OperationItem extends Component {
@@ -69,14 +76,18 @@ class OperationItem extends Component {
         return (<div className="OperationItem"
             style={{ left: this.props.beginIndex * unitPx + "px" }}>
             <div className="TimeTag">
-
             </div>
             <Tooltip placement="topLeft" title={this.props.secondInfo}>
-                <div className="OperationItemBody" onClick={this.showDrawer}
-                    style={{ width: this.props.timeDuration * unitPx + "px" }}>
+                <div className="OperationItemBody" onClick={this.showDrawer} style={{ width: this.props.operationDuration * unitPx + "px" }}>
                     {this.props.patientName}
                 </div>
             </Tooltip>
+            <div className="OperationItemBody"
+                style={{ width: this.props.recoverDuration * unitPx + "px", background: '#FFAB8A' }}>
+            </div>
+            <div className="OperationItemBody"
+                style={{ width: this.props.cleanDuration * unitPx + "px", background: '#01D2BE' }}>
+            </div>
             <div className="TimeTag">
             </div>
             <Drawer
@@ -124,18 +135,20 @@ function OperationScheduleTable(props) {
                                 </tr>,
                                 <tr key={"data" + bedIdx} className={"stickyRow"}>
                                     {/*-------纵轴-------*/}
-                                    <td className={"bedInfo"}>{bedIdx}</td>
+                                    <td className={"bedInfo"}>{bedSchedule.roomInfo}</td>
                                     {/*-------纵轴-------*/}
                                     <td className={"quarterCell dataRow"}>
                                         <div className={"BedScheduleTd"}>
                                             {
-                                                bedSchedule.map((x, y) => {
+                                                bedSchedule.operation.map((x, y) => {
                                                     return <OperationItem key={y}
                                                                           patientName={x.patientName}
                                                                           beginIndex={x.beginIndex}
-                                                                          timeDuration={x.timeDuration}
+                                                                          operationDuration={x.operationDuration}
                                                                           secondInfo={x.secondInfo}
-                                                                          thirdInfo={x.thirdInfo} />
+                                                                          thirdInfo={x.thirdInfo}
+                                                                          recoverDuration={x.recoverDuration}
+                                                                          cleanDuration={x.recoverDuration} />
                                                 })
                                             }
                                         </div>

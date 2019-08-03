@@ -12,7 +12,7 @@
 .TimeTag {
   width: 2px;
   height: 40px;
-  background: aliceblue;
+  background: red;
   position:relative;
   top:-5px;
 }
@@ -20,14 +20,18 @@
 .OperationItemBody {
   width: 100px;
   height: 30px;
-  background: #EC7743;
+  background: #31ABF7;
+  display: inline-block;
+  *display: inline; 
+  zoom: 1; 
+  vertical-align: top;
 }
 
 .bedInfo {
   width: 60px;
   border: none;
-  color: #D9F0F6;
-  background: #282c34;
+  color: #282c34;
+  background:white;
   z-index: 2;
   position:sticky;
   left:0;
@@ -36,7 +40,7 @@
 .timePoint {
   height: 8px;
   width: 8px;
-  background: #D9F0F6;
+  background: red;
   border-radius: 50%;
   position: absolute;
   left: -4px;
@@ -53,7 +57,7 @@
 
 .quarterCell {
   width: 45px;
-  border:1px solid gray;
+  border:1px solid white;
 }
 
 .scheduleHeader {
@@ -66,12 +70,12 @@
 }
 
 .spaceRow {
-  background: #282c34;
-  height: 30px;
+  background: white;
+  height: 10px;
 }
 
 .dataRow {
-  background: #282c34;
+  background: #EAEAEA;
   height: 30px;
 }
 
@@ -88,7 +92,6 @@
   width:1200px;
   height:500px;
   margin: 30px;
-
 }
 
 .stickyRow {

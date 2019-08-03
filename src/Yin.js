@@ -1,7 +1,7 @@
 import { Jia, Chart } from './Jia';
 import React from 'react';
 import EditableTable from './Csv2Table';
-import { Tabs } from 'antd';
+import { Tabs, Button } from 'antd';
 import logo from './logo.svg';
 import './Yin.css';
 
@@ -28,6 +28,7 @@ class Yin extends React.Component {
                         </div>
                         <div className="chart">
                             <Chart />
+                            <Button />
                         </div>
                     </TabPane>
                 </Tabs>
