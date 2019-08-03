@@ -23,23 +23,6 @@
   background: #EC7743;
 }
 
-.Hr {
-  width: 0;
-  height: 70px;
-  border-left: aliceblue 1px solid;
-  position: absolute;
-}
-
-.YAxis {
-  position:absolute;
-  top:0;
-  left:0;
-  width:50px;
-  height:100%;
-  background-color:#CCCCCC;
-  margin-top:90px;
-}
-
 .bedInfo {
   width: 60px;
   border: none;
