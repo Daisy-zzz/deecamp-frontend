@@ -24,7 +24,8 @@ class Yin extends React.Component {
 
 
     handleClick = () => {
-        console.log(EditableTable.dataSource);
+        // localStorage.setItem("predict", EditableTable.dataSource);
+        // console.log(EditableTable.dataSource);
         this.setState({ activeKey: '2' });
         notification.open({
             message: '提交成功！',

@@ -1,11 +1,10 @@
-﻿import React, {Component} from 'react';
+﻿import React, { Component } from 'react';
 import './Jia.css';
 import { Tooltip, Drawer } from 'antd';
 import { Bar as BarChart, Doughnut } from 'react-chartjs-2';
-
+import PredictChart from './myChart';
 const unitPx = 10;
 const barHeight = 30;
-
 // sample data
 let schedules = [
     [
@@ -87,7 +86,11 @@ class OperationItem extends Component {
                 visible={this.state.visible}
             >
                 <p>{this.props.thirdInfo}</p>
+                <div className='chart'>
+                    <PredictChart />
+                </div>
             </Drawer>
+
         </div>);
     }
 }
@@ -97,7 +100,7 @@ class BedSchedule extends Component {
         return <div className="BedSchedule">
             {
                 [...Array(97).keys()].map(x => {
-                    return <div className="Hr" style={{left: x * unitPx * 3 + "px"}}>
+                    return <div className="Hr" style={{ left: x * unitPx * 3 + "px" }}>
                     </div>
                 })
             }
@@ -128,49 +131,54 @@ class OperationSchedule extends Component {
 }
 
 function Jia() {
-  return (
-    <div className="App">
-        <div>横轴</div>
-        <div>
-            <div className='YAxis'>纵轴</div>
-            <OperationSchedule schedules={schedules} />
+    return (
+        <div className="App">
+            <div>横轴</div>
+            <div>
+                <div className='YAxis'>纵轴</div>
+                <OperationSchedule schedules={schedules} />
+            </div>
         </div>
-    </div>
-  );
+    );
 }
 
+// [('RM > 6.62', 10.017092479517238),
+//  ('LSTAT <= 6.87', 5.189813586739314),
+//  ('TAX=193', 1.84248629979142),
+//  ('PTRATIO=17', 0.3955342873536875),
+//  ('RAD=3', -0.36039976416318614)]
 
 class Chart extends Component {
-  render() {
-    const data = {
-      labels: ['January', 'February'],
-      datasets: [{
-        label: 'My First dataset',
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-        ],
-        borderWidth: 1,
-        data: [45, 55],
-      }],
-    };
+    render() {
+        const data = {
+            labels: ['January', 'February'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 1,
+                data: [45, 55],
+            }],
+        };
 
-    return (
-      <Doughnut data={data} />
-    );
-  }
+        return (
+            <Doughnut data={data} />
+        );
+    }
 }
 
-export {Jia, Chart};
+export { Jia, Chart };

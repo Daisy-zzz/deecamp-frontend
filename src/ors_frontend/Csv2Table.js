@@ -4,10 +4,7 @@ import { Table, Input, Button, Popconfirm, Form, Icon, notification } from 'antd
 import Highlighter from 'react-highlight-words';
 //import ReactDOM from 'react-dom';
 import './Csv2Table.css';
-import data from './Data.js';
-import API from './utils/api.js';
-import Headers from './utils/headers.js';
-import Myform from './MyForm.js';
+
 
 const EditableContext = React.createContext();//上下文(Context) 提供了一种通过组件树传递数据的方法，无需在每个级别手动传递 props 属性。
 //const { Search } = Input;
@@ -54,7 +51,7 @@ class EditableCell extends React.Component {
                 {form.getFieldDecorator(dataIndex, {
                     rules: [
                         {
-                            required: false,
+                            required: true,
                             message: `${title} is required.`,
                         },
                     ],
@@ -96,11 +93,6 @@ class EditableCell extends React.Component {
 }
 
 class EditableTable extends React.Component {
-    
-    // state = {
-    //     searchText: '',
-    // };
-
     getColumnSearchProps = dataIndex => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
             <div style={{ padding: 8 }}>
@@ -160,6 +152,7 @@ class EditableTable extends React.Component {
         clearFilters();
         this.setState({ searchText: '' });
     };
+
     constructor(props) {
         super(props);
         this.columns = [
@@ -237,7 +230,7 @@ class EditableTable extends React.Component {
 
         this.state = {
             searchText: '',
-            dataSource: data,
+            dataSource: JSON.parse(localStorage.getItem("predict")),
         };
     }
 
@@ -249,6 +242,7 @@ class EditableTable extends React.Component {
             ...item,
             ...row,
         });
+        localStorage.setItem("predict", JSON.stringify(newData));
         this.setState({ dataSource: newData });
     };
 
@@ -288,7 +282,7 @@ class EditableTable extends React.Component {
                     dataSource={dataSource}
                     columns={columns}
                 />
-                
+
             </div>
 
         );

@@ -8,14 +8,16 @@ import moment from 'moment';
 const format = 'HH:mm';
 
 class Myform extends React.Component {
-    state = { fileList: [] };
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                fetch(API + '/hospital', Headers(values)).then(res => {
-                    if (res.status === 200) {
-                        return res.json()
+                localStorage.setItem("setting", JSON.stringify(values));
+                let arr = JSON.parse(localStorage.getItem("setting"));
+                console.log(arr);
+                fetch(API + '/predict', Headers(values)).then(res => {
+                    if (res.status === 200) {                       
+                        return res.json();
                     }
                 }).then(function (json) {
                     window.location.href = 'http://localhost:3000/schedule';
@@ -32,18 +34,17 @@ class Myform extends React.Component {
             }
             if (info.file.status === 'done') {
                 message.success(`${info.file.name} 文件上传成功`);
-                let fileList = [info.file.response];
-                this.setState({ fileList });
-                console.log(this.state.fileList);
+                localStorage.setItem("predict", JSON.stringify(info.file.response));
+                let arr2 = JSON.parse(localStorage.getItem("predict"));
+                console.log(arr2);
             } else if (info.file.status === 'error') {
                 message.error(`${info.file.name} 文件上传失败`);
             }
-
         }
 
         const props = {
             name: 'file',
-            action: 'http://127.0.0.1:5000/hospital',
+            action: 'http://127.0.0.1:5000/predict',
             headers: {
                 authorization: 'authorization-text',
             },
