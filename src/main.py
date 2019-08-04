@@ -13,9 +13,9 @@ app.config['JSON_AS_ASCII'] = False
 
 @app.route('/predict', methods=['POST'])
 def hospital_setting():
-    file = request.files['file']
-    raw_data = pd.DataFrame(pd.read_csv(file))
-    predicted_data = predict(raw_data)
+    # file = request.files['file']
+    # raw_data = pd.DataFrame(pd.read_csv(file))
+    # predicted_data = predict(raw_data)
     return jsonify({
         "key": "0",
         "id": "1",

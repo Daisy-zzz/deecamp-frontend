@@ -1,63 +1,22 @@
 .App {
   text-align: center;
+  border:2px solid;
+  border-radius:25px;
+  -moz-border-radius:25px;
+  margin: 10px;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.OperationSchedule {
-  background: #D9F0F6;
-  margin-left:50px;
-  /* overflow: scroll; */
-}
-
-.BedSchedule {
-  width: 2880px;
-  height: 30px;
-  background: #80B2D3;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  position: relative;
-}
-
 
 .OperationItem {
   display: flex;
   position: absolute;
+  z-index: 1;
+  top: 0;
 }
 
 .TimeTag {
   width: 2px;
   height: 40px;
-  background: aliceblue;
+  background: red;
   position:relative;
   top:-5px;
 }
@@ -65,22 +24,86 @@
 .OperationItemBody {
   width: 100px;
   height: 30px;
-  background: #EC7743;
+  background: #31ABF7;
+  display: inline-block;
+  *display: inline; 
+  zoom: 1; 
+  vertical-align: top;
 }
 
-.Hr {
-  width: 0;
-  height: 70px;
-  border-left: aliceblue 1px solid;
-  position: absolute;
-}
-
-.YAxis {
-  position:absolute;
-  top:0;
+.bedInfo {
+  width: 60px;
+  border: none;
+  color: #282c34;
+  background:white;
+  z-index: 2;
+  position: sticky;
   left:0;
-  width:50px;
-  height:100%;
-  background-color:#CCCCCC;
-  margin-top:90px;
+  font-family:"Georgia";
+  font-size: "16px";
+}
+
+.timePoint {
+  height: 8px;
+  width: 8px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  left: -4px;
+  bottom: -4px;
+  font-family:"Georgia";
+  font-size: "30px";
+}
+
+.timeTag {
+  transform: rotate(-30deg);
+  position: absolute;
+  left: -4px;
+  bottom: 0;
+  z-index: 3;
+  font-family:"Georgia";
+  font-size: "30px";
+}
+
+.quarterCell {
+  width: 45px;
+  border:1px solid white;
+}
+
+.scheduleHeader {
+  background: white;
+  /* border: solid gray; */
+  border-width: 1px 0 1px 0;
+  color: black;
+  height: 50px;
+  z-index: 2;
+}
+
+.spaceRow {
+  background: white;
+  height: 10px;
+}
+
+.dataRow {
+  background: #EAEAEA;
+  height: 30px;
+}
+
+.BedScheduleTd {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin-top: -1px;
+}
+
+.OperationSchedule{
+  overflow:auto;
+  height:800px;
+  margin: 10px;
+}
+
+.stickyRow {
+  position:sticky;
+  top:0;
 }

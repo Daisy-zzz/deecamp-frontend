@@ -45,6 +45,7 @@ class Myform extends React.Component {
         const props = {
             name: 'file',
             action: 'http://127.0.0.1:5000/predict',
+
             headers: {
                 authorization: 'authorization-text',
             },
