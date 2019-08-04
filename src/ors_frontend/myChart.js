@@ -11,6 +11,12 @@ class PredictChart extends Component {
                 position: 'right'
             }
         };
+
+        let labelLeft = {
+            normal: {
+                position: 'left'
+            }
+        }
         return {
             title: {
                 text: '交错正负轴标签'
