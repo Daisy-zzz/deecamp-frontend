@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  border:2px solid;
+  border-radius:25px;
+  -moz-border-radius:25px;
+  margin: 10px;
 }
 
 .OperationItem {
@@ -33,18 +37,22 @@
   color: #282c34;
   background:white;
   z-index: 2;
-  position:sticky;
+  position: sticky;
   left:0;
+  font-family:"Georgia";
+  font-size: "16px";
 }
 
 .timePoint {
   height: 8px;
   width: 8px;
-  background: red;
+  background: black;
   border-radius: 50%;
   position: absolute;
   left: -4px;
   bottom: -4px;
+  font-family:"Georgia";
+  font-size: "30px";
 }
 
 .timeTag {
@@ -53,6 +61,8 @@
   left: -4px;
   bottom: 0;
   z-index: 3;
+  font-family:"Georgia";
+  font-size: "30px";
 }
 
 .quarterCell {
@@ -61,10 +71,10 @@
 }
 
 .scheduleHeader {
-  background: #282c34;
-  border: solid gray;
+  background: white;
+  /* border: solid gray; */
   border-width: 1px 0 1px 0;
-  color: #D9F0F6;
+  color: black;
   height: 50px;
   z-index: 2;
 }
@@ -89,9 +99,8 @@
 
 .OperationSchedule{
   overflow:auto;
-  width:1200px;
-  height:500px;
-  margin: 30px;
+  height:800px;
+  margin: 10px;
 }
 
 .stickyRow {

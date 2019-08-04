@@ -29,7 +29,7 @@ class Myform extends React.Component {
         const { getFieldDecorator } = this.props.form;
         const props = {
             name: 'file',
-            action: 'http://127.0.0.1:5000/hospital',
+            action: API + '/hospital',
             headers: {
                 authorization: 'authorization-text',
             },

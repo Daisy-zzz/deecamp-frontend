@@ -28,8 +28,8 @@ class Yin extends React.Component {
                         </div>
                         <div className="chart">
                             <Chart />
-                            <Button />
                         </div>
+                        
                     </TabPane>
                 </Tabs>
             </div>

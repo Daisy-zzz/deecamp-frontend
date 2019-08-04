@@ -1,7 +1,9 @@
 ﻿import React, {Component} from 'react';
 import './Jia.css';
-import { Tooltip, Drawer } from 'antd';
+import { Tooltip, Drawer, Button } from 'antd';
 import { Bar as BarChart, Doughnut } from 'react-chartjs-2';
+import Headers from "./utils/headers";
+import API from "./utils/api";
 
 const unitPx = 15;
 
@@ -171,12 +173,76 @@ function OperationScheduleTable(props) {
         </div>)
 }
 
-function Jia() {
-  return (
-    <div className="App">
-        <OperationScheduleTable schedules={schedules}/>
-    </div>
-  );
+class Jia extends Component {
+    preview = () => { // 预览
+        let values = [ // 数据从localStorage中取出来
+            {
+                "id": "1",
+                "name": "张三",
+                "gender": "男",
+                "age": "70",
+                "department": "心血管科",
+                "operatingName": "心脏搭桥手术",
+                "anaesthetic": "全身麻醉",
+                "doctorName": "李四",
+                "predTime": "120",
+                "orId": "",
+                "startTime": "",
+                "recoverDuration": 1,
+                "cleanDuration": 2
+            }, {
+                "id": "2",
+                "name": "王二",
+                "gender": "女",
+                "age": "23",
+                "department": "妇产科",
+                "operatingName": "剖腹产手术",
+                "anaesthetic": "全身麻醉",
+                "doctorName": "王小二",
+                "predTime": "100",
+                "orId": "",
+                "startTime": "15:00",
+                "recoverDuration": 1,
+                "cleanDuration": 2
+            }
+        ];
+        fetch(API + '/preview', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+            },
+            responseType: 'blob',
+            body: JSON.stringify(values)
+        }).then(res => {
+            if (res.status === 200) {
+                return res.blob()
+            }
+        }).then(function (blob) {
+            console.log(blob);
+            let blobUrl = window.URL.createObjectURL(blob);
+            window.open(blobUrl);
+            // let filename = 'preview.pdf';
+            // let a = document.getElementById('a_id');
+            // a.href = blobUrl;
+            // a.download = filename;
+            // a.click();
+            // window.URL.revokeObjectURL(blobUrl);
+            // window.location.href = blobUrl;
+            
+        });
+    };
+
+    render(){
+        return (
+            <div className="App">
+                <OperationScheduleTable schedules={schedules} />
+                <Button type="primary" onClick={this.preview}>预览</Button>
+            </div>
+        )
+    };
 }
 
 
